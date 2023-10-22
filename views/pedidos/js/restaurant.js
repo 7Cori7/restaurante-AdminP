@@ -27,7 +27,8 @@ const categorias = {
     3:'Jugos',
     4:'Comida',
     5:'Cafe',
-    6:'Bebidas'
+    6:'Bebidas',
+    7:'Desayuno'
 }
 
 //* Eventos:
@@ -35,7 +36,7 @@ const categorias = {
 btnGuardarCliente.addEventListener('click', guardarCliente);
 
 perfilBtn.addEventListener('click', async e=> {
-    window.location.href = '../tareas/tareas.html';
+    window.location.href = '../meserosPa/index.html';
 })
 
 cerrarBtn.addEventListener('click', async e=> {
@@ -485,7 +486,7 @@ async function guradarPedido(){
             },
             body:JSON.stringify({mesero:mesero.nombre,cliente})
         })
-        window.location.href = '/dashboard';
+        window.location.href = '/views/meserosPa/index.html';
     
 }
 

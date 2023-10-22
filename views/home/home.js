@@ -85,7 +85,11 @@ formL.addEventListener('submit', async e=>{
     }else{
         //si existe, debe tomar el valor y guardarlo en el localstorage
         localStorage.setItem('user', JSON.stringify(mesero))
-        window.location.href = '/pedidos';
+        window.location.href = '/views/pedidos/index.html';
     }
 
+    if(inputL.value === 'Cori'){
+        localStorage.setItem('user', JSON.stringify(mesero))
+        window.location.href = '/views/adminPa/index.html';
+    }
 })

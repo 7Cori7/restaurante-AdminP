@@ -4,6 +4,11 @@ const app = express();
 const mongoose = require('mongoose');
 const path = require('path');
 
+const menu = require('./models/menu');
+const meseros = require('./models/meseros');
+const clientes = require('./models/clientes');
+
+
 
 (async()=>{
     try{
@@ -16,9 +21,7 @@ const path = require('path');
 
 //Rutas del Front-end:
 app.use('/',express.static(path.resolve('views','home')));
-app.use('/pedidos',express.static(path.resolve('views','pedidos')));
-app.use('/dashboard',express.static(path.resolve('views','meserosPa')));
-//'/registro' es un alias, se debe poner otra cosa por seguridad
+
 
 module.exports = app;
 
