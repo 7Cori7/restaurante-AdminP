@@ -1,0 +1,20 @@
+.notification {
+    position: fixed;
+    top: 1rem;
+    right: 1rem;
+    padding: 1rem;
+    background-color: #4338ca;
+    border-radius: 0.5rem;
+    color: white;
+    display: none;
+}
+
+
+.show-notification {
+    display: block;
+}
+
+#modal::backdrop{
+    backdrop-filter: blur(4px);
+}
+

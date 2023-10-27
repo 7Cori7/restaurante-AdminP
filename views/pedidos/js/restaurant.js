@@ -115,8 +115,11 @@ function mostrarMenu(menu){
 
     const contenido = document.querySelector('#menu .contenido');
 
+    const porCategorias = menu.sort((a,b)=>{
+        return a.categoria - b.categoria;
+    })
 
-    menu.forEach(pos=>{
+    porCategorias.forEach(pos=>{
         const fila = document.createElement('div');
         fila.classList.add('row','border-top');
         const nombre = document.createElement('div');

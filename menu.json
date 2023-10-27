@@ -137,6 +137,12 @@
       "precio": "1",
       "categoria": "7",
       "id": 23
+    },
+    {
+      "nombre": "Tiramisú",
+      "precio": "5",
+      "categoria": "2",
+      "id": 24
     }
   ],
   "meseros": [
@@ -164,6 +170,10 @@
     {
       "nombre": "Tamino",
       "id": 8
+    },
+    {
+      "nombre": "Luis",
+      "id": 9
     }
   ],
   "clientes": [
@@ -405,6 +415,45 @@
         "total": "16.94"
       },
       "id": 12
+    },
+    {
+      "mesero": "Luis",
+      "cliente": {
+        "mesa": "7",
+        "hora": "17:00",
+        "pedido": [
+          {
+            "id": 5,
+            "nombre": "Pie de parchita",
+            "precio": 5,
+            "categoria": 2,
+            "cantidad": 3
+          },
+          {
+            "id": 9,
+            "nombre": "Jugo de fresa",
+            "precio": "2",
+            "categoria": "3",
+            "cantidad": 2
+          },
+          {
+            "id": 14,
+            "nombre": "Cafe",
+            "precio": 2,
+            "categoria": 5,
+            "cantidad": 1
+          },
+          {
+            "nombre": "Empanada de Pollo",
+            "precio": "1",
+            "categoria": "7",
+            "id": 21,
+            "cantidad": 2
+          }
+        ],
+        "total": "27.83"
+      },
+      "id": 13
     }
   ]
 }

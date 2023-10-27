@@ -12,6 +12,12 @@ if(!admin){
 //*SELECTORES
 const listado = document.querySelector('#listado-Productos');
 const cerrarBtn = document.querySelector('#cerrar-btn');
+const openModal = document.querySelector('#open-modal');
+const closeModal = document.querySelector('#close-modal');
+const formC = document.querySelector('#form-create');
+const inputC = document.querySelector('#create-input');
+const modal = document.querySelector('#modal');
+const notificacion = document.querySelector('.notification');
 
 //*EVENTOS:
 document.addEventListener('DOMContentLoaded', mostrarProductos);
@@ -22,6 +28,75 @@ cerrarBtn.addEventListener('click', async e=> {
     window.location.href = '../home/index.html';
 })
 
+openModal.addEventListener('click', () => {
+    modal.showModal();
+})
+
+closeModal.addEventListener('click', () => {
+    modal.close();
+})
+
+formC.addEventListener('click', async e=>{
+    e.preventDefault();
+    console.log('click')
+    const respuesta = await fetch('http://localhost:3000/meseros', {
+        method:'GET'
+    });
+
+    const meseros = await respuesta.json();
+
+    //buscar si ya existe un usuario con el mismo nombre:
+    const mesero = meseros.find(i=>i.nombre === inputC.value);
+    ////console.log(user)
+
+    //validaciones:
+    if(!inputC.value){
+        //el campo esta vacio
+        console.log('El usuario no puede estar vacio')
+        notificacion.innerHTML = 'El usuario no puede estar vacio';
+        notificacion.classList.add('show-notification');
+
+        setTimeout(()=>{
+            notificacion.classList.remove('show-notification');//<--esta clase le hace display a la notificacion
+        },2500);
+    }else if(mesero){
+        //ya existe el usuario
+        ////console.log('ya existe')
+        notificacion.innerHTML = 'El usuario ya existe';
+        notificacion.classList.add('show-notification');
+
+        setTimeout(()=>{
+            notificacion.classList.remove('show-notification');
+        },2500);
+    }else{
+        //Crear el usuario
+        ////console.log('creando nuevo usuario')
+        await fetch('http://localhost:3000/meseros', {
+            method: 'POST',
+            headers: {
+                'Content-Type':'application/json'
+            },
+            body:JSON.stringify({nombre:inputC.value})
+        })
+
+
+        notificacion.innerHTML = `El empleado ${inputC.value} ha sido creado`;
+        notificacion.classList.add('show-notification');
+
+        setTimeout(()=>{
+            notificacion.classList.remove('show-notification');
+        },2500);
+
+        inputC.value = '';
+        
+        setTimeout(()=>{
+            modal.close();
+        },5000);
+    }
+});
+
+//*FUNCIONES:
+
 async function mostrarProductos() {
     const productos = await obtenerProductos();
 
@@ -31,7 +106,7 @@ async function mostrarProductos() {
         return a.categoria - b.categoria;
     })
 
-    console.log(porCategorias)
+    ////console.log(porCategorias)
 
     porCategorias.forEach(i => {
         const {nombre, precio, categoria, id} = i;

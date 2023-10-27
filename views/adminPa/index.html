@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Restaurant App</title>
     <link rel="stylesheet" href="/views/adminPa/css/tailwind.min.css">
+    <link rel="stylesheet" href="/views//adminPa/css/estilos.css">
 </head>
 <body class="min-h-100 bg-gray-200">
     <div class="md:flex min-h-screen md:align-top">
@@ -20,13 +21,16 @@
                     href="nuevo-producto.html" 
                     class="px-3 py-1 text-white block hover:bg-blue-900 mt-2 hover:text-yellow-400"
                 >Nuevo Producto</a>
+                <br>
+                <br>
+                <button id="open-modal" class="px-3 py-1 text-white block hover:bg-blue-900 mt-2 hover:text-yellow-400" data-bs-toggle="modal" data-bs-target="#formulario" type="button">Crear Nuevo Mesero</button>
+
+                <button id="cerrar-btn" class="px-3 py-1 text-white block hover:bg-blue-900 mt-2 hover:text-yellow-400">Cerrar Sesión</button>
             </nav>
         </aside> <!--sidebar-->
         <main class="md:w-3/5  xl:w-4/5 px-5 py-10 bg-gray-200">
             
 
-            
-            <button id="cerrar-btn" style="float: right;" class="bg-gray-500 text-white px-2 py-1 hover:bg-blue-600">Cerrar Sesión</button>
             <h2 class="text-3xl font-light text-center">Productos</h2>
 
             <div class="flex flex-col mt-10">
@@ -61,7 +65,27 @@
 
            </main>
 
-           
+    <!-- Modal -->
+    <dialog class="flex-col justify-center items-center px-16 py-8 shadow-lg z-50 absolute top-0 mt-20 rounded-lg" id="modal">
+        <div>
+            <p class="notification"></p>
+            <div>
+                    <div>
+                        <h2 class="text-center text-2xl mb-4">Restaurant App</h2>
+                    </div>    
+                <form>
+                    <div class="flex flex-col gap-4">
+                        <label   label>Nuevo Mesero</label>
+                        <input id="create-input" type="text" class="py-2 bg-blue-200 shadow-lg rounded-lg">
+                    </div>
+                </form>        
+                    <div class="flex gap-4 mt-4">
+                        <button class="px-3 py-1 text-white block hover:bg-red-900 mt-2 bg-red-600" id="close-modal">Cerrar</button>
+                        <button type="submit" id="form-create" class="px-3 py-1 text-white block hover:bg-blue-900 mt-2 hover:text-yellow-400 bg-blue-600">Crear Nuevo Mesero</button>
+                    </div>
+            </div>
+        </div>
+    </dialog>
 
     </div>
     <script src="/views/adminPa/js/index.js" type="module"></script>
